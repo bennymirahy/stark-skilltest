@@ -1,13 +1,13 @@
 # import json
 # import logging
 # from datetime import datetime
+import starkbank
 from django.http import JsonResponse
 from ninja import NinjaAPI
 
-import service.stark_svc as stark_svc
-from views_schemas import WebhookInvoiceParams
-from stark_auth import project
-import starkbank
+from .service import stark_svc
+from .service.stark_auth import project
+from .views_schemas import WebhookInvoiceParams
 
 api = NinjaAPI()
 starkbank.user = project

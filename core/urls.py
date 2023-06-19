@@ -1,5 +1,5 @@
 """
-URL configuration for stark_django project.
+URL configuration for core project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from views import api
+from .views import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', api.urls),
+    path('integration', api.urls),
     # path('integration/', api.urls),
 ]
