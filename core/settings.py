@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_crontab',
+    'django_cron',
     'core',
 ]
 
@@ -132,6 +133,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRONJOBS = [
-    ('* * * * *', 'core.management.commands.send_invoices.Command')
+CRON_CLASSES = [
+    "core.cron.InvoiceIssuer",
 ]

@@ -18,7 +18,7 @@ logging.basicConfig(
 logger = logging.getLogger()
 
 
-def send_invoices():
+def issue_invoices():
     quant_invoices = randint(8, 12)
     invoices = []
     for _ in range(quant_invoices):
@@ -32,9 +32,15 @@ def send_invoices():
         )
 
     starkbank.user = project
-    starkbank.invoice.create(invoices)
+    try:
+        starkbank.invoice.create(invoices)
+    except Exception as ex:
+        logger.exception(f"{datetime.today().isoformat()}: Something went wrong while issuing the invoices")
+        return False
 
     logger.info(f"{datetime.today().isoformat()}: {quant_invoices} invoices were issued")
+
+    return True
 
 
 def transfer(a, b, c):
