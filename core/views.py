@@ -14,14 +14,20 @@ starkbank.user = project
 
 @api.post("/hook")
 def invoice_webhook(request):
-    event = starkbank.event.parse(
-        signature = request.headers["Digital-Signature"],
-        content = request.data.decode("utf-8")
-    )
+    try:
+        event = starkbank.event.parse(
+            signature=request.headers["Digital-Signature"],
+            content=request.data.decode("utf-8")
+        )
+    except Exception:
+        return JsonResponse({"success": False}, status=400)
 
-    print(event.log.invoice)
+    if event.log.type != "paid":
+        # Invoice nao pago
+        return JsonResponse({"success": True})
 
-    # body = WebhookInvoiceParams.parse_raw(request.body)
-    # stark_svc.tranfer(body)
+    paid_invoice = event.log.invoice
+    paid_invoice = WebhookInvoiceParams.parse_obj(paid_invoice).currency_to_decimal()
+    stark_svc.transfer(**paid_invoice)
 
     return JsonResponse({"success": True})

@@ -1,7 +1,7 @@
 import os
 import textwrap
-import starkbank
 
+import starkbank
 
 # Replace 'private_key_string' with your actual private key string
 string_to_convert = os.getenv("PRIVATE_KEY")
