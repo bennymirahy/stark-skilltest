@@ -11,7 +11,7 @@ The webhook was created using the starkbank sandbox environment with an `invoice
 ### Infrastructure
 The deployed instance consists in 2 docker containers that comunicate with each other through a unix socket. The first container is running a django-uwsgi worker process that interacts with the nginx web server to serve dynamic content. The containers communicate using shared docker volumes on the main file system.
 
-[Insert image]
+![image](https://github.com/bennymirahy/stark_skilltest/assets/40213163/e23a8ee6-7490-4ff6-a9fc-b3259e98334b)
 
 ### Getting started
 
