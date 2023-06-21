@@ -1,0 +1,4 @@
+2023-06-21 16:21:31,184 - DEBUG - Running cron: InvoiceIssuer code core.cron.IssueInvoices
+2023-06-21 16:21:31,231 - DEBUG - Starting new HTTPS connection (1): sandbox.api.starkbank.com:443
+2023-06-21 16:21:32,438 - DEBUG - https://sandbox.api.starkbank.com:443 "POST /v2/invoice HTTP/1.1" 200 10572
+2023-06-21 16:21:32,444 - INFO - 2023-06-21T16:21:32.444018: 12 invoices were issued

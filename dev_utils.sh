@@ -12,8 +12,6 @@ cd $PROJ_BASE
 export PROJ_BASE=$(pwd)
 cd $CD
 
-devhelp
-
 function devhelp {
     echo -e "\t${YELLOW}Command${RESTORE}       ${YELLOW}Description${RESTORE}"
     echo -e "\t${GREEN}devhelp${RESTORE}        Prints this ${RED}help${RESTORE}"
@@ -21,6 +19,8 @@ function devhelp {
     echo -e "\t${GREEN}sendcode${RESTORE}       ${RED}sends${RESTORE} local code to the production server"
     echo -e "\t${GREEN}redeploy${RESTORE}       ${RED}redeploys${RESTORE} the app on the production server"
 }
+
+devhelp
 
 function sendcode {
     CD=$(pwd)
