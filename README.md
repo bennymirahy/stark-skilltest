@@ -12,6 +12,8 @@ As the cronjobs run, detailed logs can be found in `app.log`
 ### Infrastructure
 The deployed infrastructure comprises two Docker containers that communicate via a Unix socket. The first container runs a Django-uWSGI worker process responsible for interacting with the Nginx web server to serve dynamic content. These containers communicate seamlessly using shared Docker volumes on the main file system.
 
+Feel free to ask for assistence with the Nginx configuration, as this repository is not so much focused on the server infrastucture, I did not include the files here.
+
 ![image](https://github.com/bennymirahy/stark_skilltest/assets/40213163/d349a820-6256-4b78-a206-4daa8f868d81)
 
 ### Getting started
