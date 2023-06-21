@@ -3,6 +3,7 @@
 # from datetime import datetime
 import starkbank
 from django.http import JsonResponse
+from django.shortcuts import render
 from ninja import NinjaAPI
 
 from .service import stark_svc
@@ -31,3 +32,7 @@ def invoice_webhook(request):
     stark_svc.transfer(**paid_invoice)
 
     return JsonResponse({"success": True})
+
+
+def index(request):
+    return render(request, "index.html")

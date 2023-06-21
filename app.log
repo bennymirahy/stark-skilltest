@@ -1,3 +1,0 @@
-2023-06-21 20:34:07,886 - DEBUG - Starting new HTTPS connection (1): sandbox.api.starkbank.com:443
-2023-06-21 20:34:08,619 - DEBUG - https://sandbox.api.starkbank.com:443 "POST /v2/transfer HTTP/1.1" 200 726
-2023-06-21 20:34:08,626 - INFO - 2023-06-21T20:34:08.626578: 45 was transfered to Stark Bank S.A.'s account
