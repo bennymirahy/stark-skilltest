@@ -1,15 +1,18 @@
 # Stark Skill Test
-The server is hosted by an AWS EC2 instance at http://starkbank-skilltest.info.
-It is composed of a django application served by nginx as a reverse proxy.
+The application is hosted on an AWS EC2 instance at http://starkbank-skilltest.info. It consists of a Django application that is served by Nginx as a reverse proxy.
 
-*NOTE*: In the given time to complete the task, I didn't finish aquiring the needed SSL certificate necessary to secure the site with https. For that reason, the setup to receive the webhook isn't functional. Since the starkbank sandbox API doesn't accept non-encrypted URLs, I would need more time to properly secure the webhook endpoint.
+*NOTE*: In the given time to complete the task, I didn't finish aquiring the needed SSL certificate necessary to secure the site with https. For that reason, the setup to receive the webhook isn't functional. Since the starkbank sandbox API doesn't accept non-encrypted URLs, I would need more time to properly secure the webhook endpoint. I also could not finish writing all the necessary tests.
 
 ### Functionality
 This application uses the `django_cron` module to schedule the issuing of 8-12 invoices during a 24h period.
-The webhook was created using the starkbank sandbox environment with an `invoice` subscription. The value of the paid invoices (minus fees) is then transfered to a specified account.
+The webhook was created using the starkbank sandbox environment with an `invoice` subscription. The value of the paid invoices (minus fees) is then transfered to the specified account in the challenge instructions.
+
+As the cronjobs run, detailed logs can be found in `app.log`
 
 ### Infrastructure
-The deployed instance consists in 2 docker containers that comunicate with each other through a unix socket. The first container is running a django-uwsgi worker process that interacts with the nginx web server to serve dynamic content. The containers communicate using shared docker volumes on the main file system.
+The deployed infrastructure comprises two Docker containers that communicate via a Unix socket. The first container runs a Django-uWSGI worker process responsible for interacting with the Nginx web server to serve dynamic content. These containers communicate seamlessly using shared Docker volumes on the main file system.
+
+Feel free to ask for assistence with the Nginx configuration, as this repository is not so much focused on the server infrastucture, I did not include the files here.
 
 ![image](https://github.com/bennymirahy/stark_skilltest/assets/40213163/d349a820-6256-4b78-a206-4daa8f868d81)
 
