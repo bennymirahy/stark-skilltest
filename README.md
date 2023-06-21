@@ -15,7 +15,7 @@ The webhook was created using the starkbank sandbox environment with an `invoice
 
 The deployed instance consists in 2 docker containers that comunicate with each other through a unix socket. The first container is running a django-uwsgi worker process that interacts with the nginx web server to serve dynamic content. The containers communicate using shared docker volumes on the main file system.
 
-[Insert image]
+![image](https://github.com/bennymirahy/stark_skilltest/assets/40213163/6c5a257b-7258-4f91-b3ea-b934ab94d306)
 
 ## Getting started
 
@@ -42,7 +42,7 @@ Notice that the `redeploy` function syncs the production server's code with your
 
 For this, create the script with the following commands:
 
-`docker stop integration-server
+```docker stop integration-server
 docker rm integration-server
 docker run -d --restart=unless-stopped \
        --name=integration-server \
@@ -51,7 +51,7 @@ docker run -d --restart=unless-stopped \
        --env-file=/home/ubuntu/integration-server.env \
        -e PRIVATE_KEY=<your starkapi sandbox private key> \
        integration-server start.sh
- `
+ ```
 
 `dkdata/integration-server/uwsgi` is the path of your unix socket and the application's static files
 
@@ -62,7 +62,7 @@ To set up a private key, access https://starkbank.com/sandbox.
 
 ssh on to the hosted instance and run the following script to execute the following script:
 
-`docker stop nginx
+```docker stop nginx
 docker rm nginx
 docker run -d --restart=unless-stopped \
        --name=nginx -p 80:80 \
@@ -71,7 +71,7 @@ docker run -d --restart=unless-stopped \
        -v /home/ubuntu/dkdata/nginx/include:/etc/nginx/include \
        -v /home/ubuntu/dkdata/integration-server/uwsgi:/uwsgi_integration-server \
        nginx
-`
+```
 
 Notice the common mapping of volumes between the 2 containers.
 
